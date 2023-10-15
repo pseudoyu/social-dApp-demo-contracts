@@ -1,0 +1,104 @@
+name: checks
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+
+jobs:
+    lint:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: 16
+            - name: Install Dependencies
+              run: yarn install
+            - name: Run lints
+              run: yarn lint
+
+    tests:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+              with:
+                  submodules: recursive
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: 16
+            - name: Install Foundry
+              uses: foundry-rs/foundry-toolchain@v1
+              with:
+                  version: nightly
+            - name: Install Dependencies
+              run: yarn install
+            - name: Update Modules
+              run: yarn sync
+            - name: Run Tests
+              run: FOUNDRY_PROFILE=ci yarn test
+
+    codespell:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - name: Run CodeSpell
+              uses: codespell-project/actions-codespell@v1.0
+              with:
+                  check_filenames: true
+                  skip: ./.git,./docs,package-lock.json,yarn.lock
+
+    solhint:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: 16
+            - name: Install Dependencies
+              run: yarn install
+            - name: Run Check
+              run: yarn solhint
+
+    upgradeable:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+              with:
+                  submodules: recursive
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: 16
+            - name: Install Foundry
+              uses: foundry-rs/foundry-toolchain@v1
+              with:
+                  version: nightly
+            - name: Install Dependencies
+              run: yarn install
+            - name: Run Check
+              run: yarn upgradeable
+
+    contract-storage-layout:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+              with:
+                  submodules: recursive
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: 16
+            - name: Install Foundry
+              uses: foundry-rs/foundry-toolchain@v1
+              with:
+                  version: nightly
+            - name: Install Foundry
+              uses: foundry-rs/foundry-toolchain@v1
+              with:
+                  version: nightly
+            - name: Install Dependencies
+              run: yarn install
+            - name: Update Modules
+              run: yarn sync
+            - name: Run Check
+              run: yarn storage-layout

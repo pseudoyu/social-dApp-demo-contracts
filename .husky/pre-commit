@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# lint
+echo "Running lint"
+yarn lint
+
+# solhint
+echo "Running solhint"
+yarn solhint
+
+# unit test
+echo "Running test"
+#yarn test
+
