@@ -23,8 +23,8 @@ fi
 file=$(mktemp /tmp/crossbell-bridge-slither-check.XXXXX) || exit 2
 
 # slither-check
-echo "Billing: " >"$file"
-slither-check-upgradeability . Billing \
+echo "Social: " >"$file"
+slither-check-upgradeability . Social \
 --proxy-filename . \
 --proxy-name TransparentUpgradeableProxy \
 --compile-force-framework 'foundry' \

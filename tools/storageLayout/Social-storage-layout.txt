@@ -1,0 +1,8 @@
+| Name              | Type                                                                              | Slot | Offset | Bytes | Contract              |
+|-------------------|-----------------------------------------------------------------------------------|------|--------|-------|-----------------------|
+| _characterIdIndex | uint256                                                                           | 0    | 0      | 32    | src/Social.sol:Social |
+| _postIdIndex      | mapping(uint256 => uint256)                                                       | 1    | 0      | 32    | src/Social.sol:Social |
+| _commentIdIndex   | mapping(uint256 => mapping(uint256 => uint256))                                   | 2    | 0      | 32    | src/Social.sol:Social |
+| _characters       | mapping(uint256 => struct Social.Character)                                       | 3    | 0      | 32    | src/Social.sol:Social |
+| _posts            | mapping(uint256 => mapping(uint256 => struct Social.Post))                        | 4    | 0      | 32    | src/Social.sol:Social |
+| _comments         | mapping(uint256 => mapping(uint256 => mapping(uint256 => struct Social.Comment))) | 5    | 0      | 32    | src/Social.sol:Social |
