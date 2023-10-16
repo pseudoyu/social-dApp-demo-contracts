@@ -15,7 +15,6 @@ contract DeployConfig is Script {
 
     uint256 public chainID;
     address public proxyAdminOwner;
-    address public admin;
 
     constructor(string memory _path) {
         console.log("DeployConfig: reading file %s", _path);
@@ -30,6 +29,5 @@ contract DeployConfig is Script {
 
         chainID = stdJson.readUint(_json, "$.chainID");
         proxyAdminOwner = stdJson.readAddress(_json, "$.proxyAdminOwner");
-        admin = stdJson.readAddress(_json, "$.admin");
     }
 }

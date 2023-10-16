@@ -21,10 +21,10 @@ fuzz_runs = 1_000
 libs = ["node_modules", "lib"]
 
 fs_permissions = [
-    { access='read-write', path='./deployments/' },
-    { access='read', path='./deploy-config/' },
-    { access='read', path='./broadcast/' },
-    { access='read', path = './out/' },
+    { access = 'read-write', path = './deployments/' },
+    { access = 'read', path = './deploy-config/' },
+    { access = 'read', path = './broadcast/' },
+    { access = 'read', path = './out/' },
 ]
 
 # Extreme Fuzzing CI Profile :P

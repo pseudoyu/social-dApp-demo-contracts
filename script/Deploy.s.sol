@@ -4,13 +4,11 @@ pragma solidity 0.8.18;
 
 import {Deployer} from "./Deployer.sol";
 import {DeployConfig} from "./DeployConfig.s.sol";
-import {Counter} from "../src/Counter.sol";
+import {Social} from "../src/Social.sol";
 import {console2 as console} from "forge-std/console2.sol";
 import {TransparentUpgradeableProxy} from "../src/upgradeability/TransparentUpgradeableProxy.sol";
 
 contract Deploy is Deployer {
-    bytes32 public constant DEFAULT_ADMIN_ROLE = 0x00;
-
     // solhint-disable private-vars-leading-underscore
     DeployConfig internal cfg;
 
@@ -52,17 +50,17 @@ contract Deploy is Deployer {
 
     /// @notice Initialize all of the proxies
     function initialize() public {
-        initializeCounter();
+        initializeSocial();
     }
 
     /// @notice Deploy all of the proxies
     function deployProxies() public {
-        deployProxy("Counter");
+        deployProxy("Social");
     }
 
     /// @notice Deploy all of the logic contracts
     function deployImplementations() public {
-        deployCounter();
+        deploySocial();
     }
 
     function deployProxy(string memory _name) public broadcast returns (address addr_) {
@@ -84,16 +82,17 @@ contract Deploy is Deployer {
         addr_ = address(proxy);
     }
 
-    function deployCounter() public broadcast returns (address addr_) {
-        Counter counter = new Counter();
+    function deploySocial() public broadcast returns (address addr_) {
+        Social social = new Social();
 
-        save("Counter", address(counter));
-        console.log("Counter deployed at %s", address(counter));
-        addr_ = address(counter);
+        save("Social", address(social));
+        console.log("Social deployed at %s", address(social));
+        addr_ = address(social);
     }
 
-    function initializeCounter() public broadcast {
-        Counter counterProxy = Counter(mustGetAddress("CounterProxy"));
-        counterProxy.increment();
+    function initializeSocial() public broadcast {
+        Social socialProxy = Social(mustGetAddress("SocialProxy"));
+        console.log("Initializing Social at %s", address(socialProxy));
+        socialProxy.createCharacter("admin", "admin", "admin", "https://demo.image");
     }
 }
