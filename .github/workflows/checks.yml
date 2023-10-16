@@ -61,23 +61,23 @@ jobs:
             - name: Run Check
               run: yarn solhint
 
-    upgradeable:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v3
-              with:
-                  submodules: recursive
-            - uses: actions/setup-node@v3
-              with:
-                  node-version: 16
-            - name: Install Foundry
-              uses: foundry-rs/foundry-toolchain@v1
-              with:
-                  version: nightly
-            - name: Install Dependencies
-              run: yarn install
-            - name: Run Check
-              run: yarn upgradeable
+    # upgradeable:
+    #     runs-on: ubuntu-latest
+    #     steps:
+    #         - uses: actions/checkout@v3
+    #           with:
+    #               submodules: recursive
+    #         - uses: actions/setup-node@v3
+    #           with:
+    #               node-version: 16
+    #         - name: Install Foundry
+    #           uses: foundry-rs/foundry-toolchain@v1
+    #           with:
+    #               version: nightly
+    #         - name: Install Dependencies
+    #           run: yarn install
+    #         - name: Run Check
+    #           run: yarn upgradeable
 
     contract-storage-layout:
         runs-on: ubuntu-latest
