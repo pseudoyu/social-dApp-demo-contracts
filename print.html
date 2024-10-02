@@ -92,7 +92,9 @@
             <div class="sidebar-scrollbox">
                 <ol class="chapter"><li class="chapter-item "><a href="index.html">Home</a></li><li class="chapter-item affix "><li class="part-title">src</li><li class="chapter-item "><a href="src/interfaces/index.html">❱ interfaces</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="src/interfaces/ISocial.sol/interface.ISocial.html">ISocial</a></li></ol></li><li class="chapter-item "><a href="src/upgradeability/index.html">❱ upgradeability</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="src/upgradeability/TransparentUpgradeableProxy.sol/contract.TransparentUpgradeableProxy.html">TransparentUpgradeableProxy</a></li></ol></li><li class="chapter-item "><a href="src/Error.sol/error.Social__InValidCharacterId.html">Social__InValidCharacterId</a></li><li class="chapter-item "><a href="src/Error.sol/error.Social__InValidPostId.html">Social__InValidPostId</a></li><li class="chapter-item "><a href="src/Error.sol/error.Social__InValidCommentId.html">Social__InValidCommentId</a></li><li class="chapter-item "><a href="src/Error.sol/error.Social__NotCharacterOwner.html">Social__NotCharacterOwner</a></li><li class="chapter-item "><a href="src/Error.sol/error.Social__NoOperatorRole.html">Social__NoOperatorRole</a></li><li class="chapter-item "><a href="src/Social.sol/contract.Social.html">Social</a></li></ol>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
         </nav>
 
         <!-- Track and set sidebar scroll position -->
@@ -205,7 +207,7 @@ make deploy-sepolia-no-verify
 <li><a href="src/interfaces/ISocial.sol/interface.ISocial.html">ISocial</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="isocial"><a class="header" href="#isocial">ISocial</a></h1>
-<p><a href="https://github.com/pseudoyu/social-dApp-demo-contracts/blob/a18fb0cdaded349f6734edcb3049f2aa86de4979/src/interfaces/ISocial.sol">Git Source</a></p>
+<p><a href="https://github.com/pseudoyu/social-dApp-demo-contracts/blob/7a808ee7f0a9d4ec96712908572085a8cecde8ce/src/interfaces/ISocial.sol">Git Source</a></p>
 <h2 id="functions"><a class="header" href="#functions">Functions</a></h2>
 <h3 id="createcharacter"><a class="header" href="#createcharacter">createCharacter</a></h3>
 <p>Creates a new character.</p>
@@ -397,7 +399,7 @@ make deploy-sepolia-no-verify
 <li><a href="src/upgradeability/TransparentUpgradeableProxy.sol/contract.TransparentUpgradeableProxy.html">TransparentUpgradeableProxy</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="transparentupgradeableproxy"><a class="header" href="#transparentupgradeableproxy">TransparentUpgradeableProxy</a></h1>
-<p><a href="https://github.com/pseudoyu/social-dApp-demo-contracts/blob/a18fb0cdaded349f6734edcb3049f2aa86de4979/src/upgradeability/TransparentUpgradeableProxy.sol">Git Source</a></p>
+<p><a href="https://github.com/pseudoyu/social-dApp-demo-contracts/blob/7a808ee7f0a9d4ec96712908572085a8cecde8ce/src/upgradeability/TransparentUpgradeableProxy.sol">Git Source</a></p>
 <p><strong>Inherits:</strong>
 ERC1967Proxy</p>
 <p>*This contract implements a proxy that is upgradeable by an admin.
@@ -410,7 +412,7 @@ things that go hand in hand:</p>
 that call matches one of the admin functions exposed by the proxy itself.</li>
 <li>If the admin calls the proxy, it can access the admin functions, but its calls will never be forwarded to the
 implementation. If the admin tries to call a function on the implementation it will fail with an error that says
-&quot;admin cannot fallback to proxy target&quot;.
+"admin cannot fallback to proxy target".
 These properties mean that the admin account can only be used for admin actions like upgrading the proxy or changing
 the admin, so it's best if it's a dedicated account that is not used for anything else. This will avoid headaches due
 to sudden errors when trying to call a function from the proxy implementation.
@@ -420,7 +422,7 @@ you should think of the <code>ProxyAdmin</code> instance as the real administrat
 <h2 id="functions-1"><a class="header" href="#functions-1">Functions</a></h2>
 <h3 id="constructor"><a class="header" href="#constructor">constructor</a></h3>
 <p><em>Initializes an upgradeable proxy managed by <code>_admin</code>, backed by the implementation at <code>_logic</code>, and
-optionally initialized with <code>_data</code> as explained in {ERC1967Proxy-constructor}.</em></p>
+optionally initialized with <code>_data</code> as explained in <a href="src/upgradeability/TransparentUpgradeableProxy.sol//lib/forge-std/test/StdStorage.t.sol/contract.StorageTest.html#constructor">ERC1967Proxy-constructor</a>.</em></p>
 <pre><code class="language-solidity">constructor(address _logic, address admin_, bytes memory _data) payable ERC1967Proxy(_logic, _data);
 </code></pre>
 <h3 id="ifadmin"><a class="header" href="#ifadmin">ifAdmin</a></h3>
@@ -429,7 +431,7 @@ optionally initialized with <code>_data</code> as explained in {ERC1967Proxy-con
 </code></pre>
 <h3 id="admin"><a class="header" href="#admin">admin</a></h3>
 <p><em>Returns the current admin.
-NOTE: Only the admin can call this function. See {ProxyAdmin-getProxyAdmin}.
+NOTE: Only the admin can call this function. See <a href="src/upgradeability/TransparentUpgradeableProxy.sol//node_modules/@openzeppelin/contracts/proxy/transparent/ProxyAdmin.sol/contract.ProxyAdmin.html#getproxyadmin">ProxyAdmin-getProxyAdmin</a>.
 TIP: To get this value clients can read directly from the storage slot shown below (specified by EIP1967) using the
 https://eth.wiki/json-rpc/API#eth_getstorageat[<code>eth_getStorageAt</code>] RPC call.
 <code>0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103</code></em></p>
@@ -437,7 +439,7 @@ https://eth.wiki/json-rpc/API#eth_getstorageat[<code>eth_getStorageAt</code>] RP
 </code></pre>
 <h3 id="implementation"><a class="header" href="#implementation">implementation</a></h3>
 <p><em>Returns the current implementation.
-NOTE: Only the admin can call this function. See {ProxyAdmin-getProxyImplementation}.
+NOTE: Only the admin can call this function. See <a href="src/upgradeability/TransparentUpgradeableProxy.sol//node_modules/@openzeppelin/contracts/proxy/transparent/ProxyAdmin.sol/contract.ProxyAdmin.html#getproxyimplementation">ProxyAdmin-getProxyImplementation</a>.
 TIP: To get this value clients can read directly from the storage slot shown below (specified by EIP1967) using the
 https://eth.wiki/json-rpc/API#eth_getstorageat[<code>eth_getStorageAt</code>] RPC call.
 <code>0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc</code></em></p>
@@ -451,14 +453,14 @@ NOTE: Only the admin can call this function. See {ProxyAdmin-changeProxyAdmin}.<
 </code></pre>
 <h3 id="upgradeto"><a class="header" href="#upgradeto">upgradeTo</a></h3>
 <p><em>Upgrade the implementation of the proxy.
-NOTE: Only the admin can call this function. See {ProxyAdmin-upgrade}.</em></p>
+NOTE: Only the admin can call this function. See <a href="src/upgradeability/TransparentUpgradeableProxy.sol//node_modules/@openzeppelin/contracts/proxy/transparent/ProxyAdmin.sol/contract.ProxyAdmin.html#upgrade">ProxyAdmin-upgrade</a>.</em></p>
 <pre><code class="language-solidity">function upgradeTo(address newImplementation) external ifAdmin;
 </code></pre>
 <h3 id="upgradetoandcall"><a class="header" href="#upgradetoandcall">upgradeToAndCall</a></h3>
 <p><em>Upgrade the implementation of the proxy, and then call a function from the new implementation as specified
 by <code>data</code>, which should be an encoded function call. This is useful to initialize new storage variables in the
 proxied contract.
-NOTE: Only the admin can call this function. See {ProxyAdmin-upgradeAndCall}.</em></p>
+NOTE: Only the admin can call this function. See <a href="src/upgradeability/TransparentUpgradeableProxy.sol//node_modules/@openzeppelin/contracts/proxy/transparent/ProxyAdmin.sol/contract.ProxyAdmin.html#upgradeandcall">ProxyAdmin-upgradeAndCall</a>.</em></p>
 <pre><code class="language-solidity">function upgradeToAndCall(address newImplementation, bytes calldata data) external payable ifAdmin;
 </code></pre>
 <h3 id="_admin"><a class="header" href="#_admin">_admin</a></h3>
@@ -466,36 +468,36 @@ NOTE: Only the admin can call this function. See {ProxyAdmin-upgradeAndCall}.</e
 <pre><code class="language-solidity">function _admin() internal view virtual returns (address);
 </code></pre>
 <h3 id="_beforefallback"><a class="header" href="#_beforefallback">_beforeFallback</a></h3>
-<p><em>Makes sure the admin cannot access the fallback function. See {Proxy-_beforeFallback}.</em></p>
+<p><em>Makes sure the admin cannot access the fallback function. See <a href="src/upgradeability/TransparentUpgradeableProxy.sol//node_modules/@openzeppelin/contracts/proxy/Proxy.sol/abstract.Proxy.html#_beforefallback">Proxy-_beforeFallback</a>.</em></p>
 <pre><code class="language-solidity">function _beforeFallback() internal virtual override;
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="social__invalidcharacterid"><a class="header" href="#social__invalidcharacterid">Social__InValidCharacterId</a></h1>
-<p><a href="https://github.com/pseudoyu/social-dApp-demo-contracts/blob/a18fb0cdaded349f6734edcb3049f2aa86de4979/src/Error.sol">Git Source</a></p>
+<p><a href="https://github.com/pseudoyu/social-dApp-demo-contracts/blob/7a808ee7f0a9d4ec96712908572085a8cecde8ce/src/Error.sol">Git Source</a></p>
 <p><em>Invalid Character Id</em></p>
 <pre><code class="language-solidity">error Social__InValidCharacterId(uint256 characterId);
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="social__invalidpostid"><a class="header" href="#social__invalidpostid">Social__InValidPostId</a></h1>
-<p><a href="https://github.com/pseudoyu/social-dApp-demo-contracts/blob/a18fb0cdaded349f6734edcb3049f2aa86de4979/src/Error.sol">Git Source</a></p>
+<p><a href="https://github.com/pseudoyu/social-dApp-demo-contracts/blob/7a808ee7f0a9d4ec96712908572085a8cecde8ce/src/Error.sol">Git Source</a></p>
 <p><em>Invalid Post Id</em></p>
 <pre><code class="language-solidity">error Social__InValidPostId(uint256 postId);
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="social__invalidcommentid"><a class="header" href="#social__invalidcommentid">Social__InValidCommentId</a></h1>
-<p><a href="https://github.com/pseudoyu/social-dApp-demo-contracts/blob/a18fb0cdaded349f6734edcb3049f2aa86de4979/src/Error.sol">Git Source</a></p>
+<p><a href="https://github.com/pseudoyu/social-dApp-demo-contracts/blob/7a808ee7f0a9d4ec96712908572085a8cecde8ce/src/Error.sol">Git Source</a></p>
 <p><em>Invalid Comment Id</em></p>
 <pre><code class="language-solidity">error Social__InValidCommentId(uint256 commentId);
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="social__notcharacterowner"><a class="header" href="#social__notcharacterowner">Social__NotCharacterOwner</a></h1>
-<p><a href="https://github.com/pseudoyu/social-dApp-demo-contracts/blob/a18fb0cdaded349f6734edcb3049f2aa86de4979/src/Error.sol">Git Source</a></p>
+<p><a href="https://github.com/pseudoyu/social-dApp-demo-contracts/blob/7a808ee7f0a9d4ec96712908572085a8cecde8ce/src/Error.sol">Git Source</a></p>
 <p><em>Not the owner of the character</em></p>
 <pre><code class="language-solidity">error Social__NotCharacterOwner(uint256 characterId, address owner);
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="social__nooperatorrole"><a class="header" href="#social__nooperatorrole">Social__NoOperatorRole</a></h1>
-<p><a href="https://github.com/pseudoyu/social-dApp-demo-contracts/blob/a18fb0cdaded349f6734edcb3049f2aa86de4979/src/Error.sol">Git Source</a></p>
+<p><a href="https://github.com/pseudoyu/social-dApp-demo-contracts/blob/7a808ee7f0a9d4ec96712908572085a8cecde8ce/src/Error.sol">Git Source</a></p>
 <p><em>No Operator Role</em></p>
 <pre><code class="language-solidity">error Social__NoOperatorRole(address operator);
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="social"><a class="header" href="#social">Social</a></h1>
-<p><a href="https://github.com/pseudoyu/social-dApp-demo-contracts/blob/a18fb0cdaded349f6734edcb3049f2aa86de4979/src/Social.sol">Git Source</a></p>
+<p><a href="https://github.com/pseudoyu/social-dApp-demo-contracts/blob/7a808ee7f0a9d4ec96712908572085a8cecde8ce/src/Social.sol">Git Source</a></p>
 <p><strong>Inherits:</strong>
 <a href="src/Social.sol//src/interfaces/ISocial.sol/interface.ISocial.html">ISocial</a></p>
 <p>This contract is used for social media interactions</p>
